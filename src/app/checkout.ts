@@ -77,6 +77,7 @@ function git(dir: string, args: string[], token?: string): { ok: boolean; out: s
     ["-c", "core.hooksPath=/dev/null", "-c", "protocol.version=2", ...auth, ...args],
     {
       cwd: dir,
+      windowsHide: true,
       encoding: "utf8",
       timeout: GIT_TIMEOUT_MS,
       stdio: ["ignore", "pipe", "pipe"],

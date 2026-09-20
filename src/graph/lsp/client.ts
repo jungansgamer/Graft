@@ -42,7 +42,7 @@ export class LspClient {
     private readonly languageId: string,
     private readonly callTimeoutMs = 15000,
   ) {
-    this.proc = spawn(command, args, { cwd: root, stdio: ["pipe", "pipe", "pipe"] });
+    this.proc = spawn(command, args, { cwd: root, windowsHide: true, stdio: ["pipe", "pipe", "pipe"] });
     // ENOENT (bad path) OR an immediate exit (e.g. a rustup shim whose component
     // isn't installed) must fail fast, not hang a request for the full timeout.
     this.proc.on("error", () => { this.spawnFailed = true; });

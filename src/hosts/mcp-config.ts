@@ -47,7 +47,7 @@ const NPX_LAUNCH = { command: 'npx', args: ['-y', '@nanonets/graft', 'mcp'] };
 const BIN_LAUNCH = { command: 'graft', args: ['mcp'] };
 
 function graftOnPath(): boolean {
-  const r = spawnSync('graft', ['--version'], { stdio: 'ignore', timeout: 5000 });
+  const r = spawnSync('graft', ['--version'], { windowsHide: true, stdio: 'ignore', timeout: 5000 });
   return r.status === 0;
 }
 

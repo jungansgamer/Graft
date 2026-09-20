@@ -191,6 +191,7 @@ function gitVisibleFiles(
     ["ls-files", "-t", "--stage", "--cached", "--others", "--exclude-standard", "-z", "--"],
     {
       cwd: root,
+      windowsHide: true,
       encoding: "utf8",
       stdio: ["ignore", "pipe", "ignore"],
       maxBuffer: 64 * 1024 * 1024,
@@ -295,6 +296,7 @@ function gitVisibleFilesShallow(root: string, includes?: ReadonlySet<string>): s
     ["ls-files", "--cached", "--others", "--exclude-standard", "-z", "--"],
     {
       cwd: root,
+      windowsHide: true,
       encoding: "utf8",
       stdio: ["ignore", "pipe", "ignore"],
       maxBuffer: 64 * 1024 * 1024,

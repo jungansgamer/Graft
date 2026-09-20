@@ -68,6 +68,7 @@ const MAX_FILE_LINES = 200;
 function git(root: string, args: string[]): string | null {
   const res = spawnSync("git", ["-c", "core.quotePath=false", ...args], {
     cwd: root,
+    windowsHide: true,
     encoding: "utf8",
     stdio: ["ignore", "pipe", "pipe"],
     maxBuffer: 64 * 1024 * 1024,

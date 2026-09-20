@@ -51,6 +51,7 @@ export interface PushResult {
 function git(root: string, args: string[]): string | null {
   const res = spawnSync("git", ["-c", "core.quotePath=false", ...args], {
     cwd: root,
+    windowsHide: true,
     encoding: "utf8",
     stdio: ["ignore", "pipe", "pipe"],
   });
@@ -90,7 +91,7 @@ function currentBranch(root: string): string {
 export function githubToken(): string | null {
   const env = process.env.GH_TOKEN || process.env.GITHUB_TOKEN;
   if (env) return env;
-  const res = spawnSync("gh", ["auth", "token"], { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] });
+  const res = spawnSync("gh", ["auth", "token"], { windowsHide: true, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] });
   const out = typeof res.stdout === "string" ? res.stdout.trim() : "";
   return res.status === 0 && out ? out : null;
 }

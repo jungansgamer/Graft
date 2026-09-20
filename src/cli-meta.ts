@@ -82,6 +82,7 @@ export function formatVersionReport(current: string, latest: NpmViewResult): str
 function globalRoot(): string | null {
   try {
     const root = execFileSync("npm", ["root", "-g"], {
+      windowsHide: true,
       encoding: "utf8",
       stdio: ["ignore", "pipe", "ignore"],
       shell: process.platform === "win32",
